@@ -18,3 +18,25 @@ const getMatchData = async match_id => {
   );
   return response;
 };
+
+const formatTime = () => {
+  let time = new Date();
+  let timeString = time.toLocaleString();
+  timeString = timeString.split(',').join('');
+  let date = timeString
+    .split(' ')[0]
+    .split('/')
+    .join('-');
+  d = date.split('-')[1];
+  m = date.split('-')[0];
+  y = date.split('-')[2];
+  if (d.length == 1) {
+    d = '0' + d;
+  }
+  date = `${m}-${d}-${y}`;
+  let hour = timeString.split(' ')[1];
+  let period = timeString.split(' ')[2];
+
+  timeString = `${date} ${hour} ${period}`;
+  return timeString;
+};
