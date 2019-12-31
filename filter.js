@@ -28,7 +28,7 @@ const filter = async () => {
 
   await fs.writeFile(
     './filtered_matches.json',
-    JSON.stringify(filteredMatches)
+    JSON.stringify(filteredMatches, null, 2)
   );
 
   console.log(`Filtered ${filteredMatches.length} matches`);

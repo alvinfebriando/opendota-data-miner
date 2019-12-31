@@ -72,7 +72,7 @@ const start = async () => {
 
     await fs.writeFile(
       `./output/${formatTime()}.json`,
-      JSON.stringify(matchDataArr)
+      JSON.stringify(matchDataArr, null, 2)
     );
     console.log(
       '----------------------------------------------------------------------------'

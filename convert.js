@@ -52,7 +52,7 @@ const convert = async () => {
     });
   }
 
-  await fs.writeFile('./converted.json', JSON.stringify(converted));
+  await fs.writeFile('./converted.json', JSON.stringify(converted, null, 2));
   console.log('Converted filtered match data');
 };
 
