@@ -5,3 +5,4 @@ node_modules/
 output/*
 filtered_matches.json
 matches.json
+converted.json
