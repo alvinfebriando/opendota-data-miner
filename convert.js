@@ -43,13 +43,13 @@ const convert = async () => {
   let converted = [];
 
   for (const match of matches) {
-    converted = {
+    converted.push({
       ...match,
       game_mode: gameMode[match.game_mode].name.split('game_mode_')[1],
       lobby_type: lobbyType[match.lobby_type].name.split('lobby_type_')[1],
       start_time_string: new Date(match.start_time * 1000).toLocaleString(),
       region: region[match.region]
-    };
+    });
   }
 
   await fs.writeFile('./converted.json', JSON.stringify(converted));
