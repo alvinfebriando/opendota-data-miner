@@ -24,6 +24,12 @@ $ node fetch
 $ node filter
 ```
 
+### Merge filtered JSON
+
+```bash
+$ node merge
+```
+
 ### Convert to more readable form (replacing constant with text)
 
 ```bash
