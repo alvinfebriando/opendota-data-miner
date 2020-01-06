@@ -6,4 +6,5 @@ output/
 filtered/
 filtered_matches.json
 matches.json
+players.json
 converted.json
