@@ -2,11 +2,11 @@ const fs = require('fs').promises;
 
 const merge = async () => {
   let uniqueId = new Set();
-  let files = await fs.readdir('./output');
+  let files = await fs.readdir('./filtered');
   let merged = [];
 
   const filesContentPromises = files.map(async file => {
-    let matches = await fs.readFile(`./output/${file}`, 'utf-8');
+    let matches = await fs.readFile(`./filtered/${file}`, 'utf-8');
     try {
       matches = JSON.parse(matches);
       matches.map(match => {
