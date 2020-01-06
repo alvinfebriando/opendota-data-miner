@@ -2,7 +2,8 @@ node_modules/
 
 *.log
 
-output/*
+output/
+filtered/
 filtered_matches.json
 matches.json
 converted.json
