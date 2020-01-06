@@ -25,7 +25,7 @@ const filter = async () => {
         version: match.version,
         patch: match.patch_id,
         region: match.region,
-        player: match.players.map(player => {
+        players: match.players.map(player => {
           return {
             match_id: player.match_id,
             account_id: player.account_id,
