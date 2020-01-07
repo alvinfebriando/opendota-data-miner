@@ -35,3 +35,9 @@ $ node merge
 ```bash
 $ node convert
 ```
+
+### Split data to matches.json and players.json
+
+```bash
+$ node split
+```
