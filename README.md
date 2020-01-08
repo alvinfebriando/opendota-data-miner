@@ -18,7 +18,7 @@ $ yarn
 $ node fetch
 ```
 
-### Get only specified attribute (in filter.js)
+### Filter only specified attribute (in filter.js)
 
 ```bash
 $ node filter
@@ -40,4 +40,10 @@ $ node convert
 
 ```bash
 $ node split
+```
+
+### Do filter, merge, convert, split in one command
+
+```bash
+$ node clean
 ```
