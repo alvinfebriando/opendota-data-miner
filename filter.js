@@ -67,7 +67,6 @@ const filter = async () => {
       `./filtered/${file}`,
       JSON.stringify(filteredMatches, null, 2)
     );
-    console.log(`${file} filtered`);
   });
 
   await Promise.all(fileContentPromises);

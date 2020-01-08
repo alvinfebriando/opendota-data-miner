@@ -21,8 +21,8 @@ const merge = async () => {
   });
 
   await Promise.all(filesContentPromises);
-  await fs.writeFile('./matches.json', JSON.stringify(merged, null, 2));
-  merged = await fs.readFile('./matches.json', 'utf-8');
+  await fs.writeFile('./merged.json', JSON.stringify(merged, null, 2));
+  merged = await fs.readFile('./merged.json', 'utf-8');
   console.log(`Total data: ${JSON.parse(merged).length}`);
 };
 

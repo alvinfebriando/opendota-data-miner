@@ -1,17 +1,20 @@
 const fs = require('fs').promises;
 
 const split = async () => {
-  let matchesData = await fs.readFile('./matches.json', 'utf-8');
+  let matchesData = await fs.readFile('./converted.json', 'utf-8');
   matchesData = JSON.parse(matchesData);
   let players = [];
+  let matches = [];
 
   for (const matchData of matchesData) {
+    let data = {...matchData}
     players.push(matchData.player);
-    delete matchesData.player;
+    delete data.player;
+    matches.push(data)
   }
 
-  await fs.writeFile('./matches.json', JSON.stringify(matchesData, null, 2));
+  await fs.writeFile('./matches.json', JSON.stringify(matches, null, 2));
   await fs.writeFile('./players.json', JSON.stringify(players, null, 2));
 };
 
-module.export = split;
+module.exports = split;

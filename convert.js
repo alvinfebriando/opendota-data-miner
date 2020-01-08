@@ -17,7 +17,7 @@ const getHeroNames = (heroes, hero_id) => {
 };
 
 const convert = async () => {
-  let matches = await fs.readFile('./matches.json', 'utf-8');
+  let matches = await fs.readFile('./merged.json', 'utf-8');
   let gameMode = await fs.readFile('./constants/game_modes.json', 'utf-8');
   let lobbyType = await fs.readFile('./constants/lobby_types.json', 'utf-8');
   let region = await fs.readFile('./constants/region.json', 'utf-8');

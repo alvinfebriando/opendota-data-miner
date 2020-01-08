@@ -4,7 +4,7 @@ node_modules/
 
 output/
 filtered/
-filtered_matches.json
+merged.json
 matches.json
 players.json
 converted.json
