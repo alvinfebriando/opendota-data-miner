@@ -1,7 +1,7 @@
 # In[]
 
 import glob
-from os import listdir
+from os import listdir, remove
 from os.path import isfile, join
 import pandas as pd
 import json
@@ -43,3 +43,38 @@ def merge():
         merged_players.append(df)
     merged_players = pd.concat(merged_players, axis=0, ignore_index=True)
     merged_players.to_csv('merged_players.csv', index=False)
+
+def convert():
+    print('Converting...')
+    game_mode = pd.read_json('./constants/game_modes.json')
+    lobby_types = pd.read_json('./constants/lobby_types.json')
+    region = pd.read_json('./constants/region.json', typ='series')
+    region = region.to_frame('name')
+    hero_names = pd.read_json('./constants/hero_names.json')
+    items = pd.read_json('./constants/items.json')
+    merged_matches = pd.read_csv('./merged_matches.csv')
+    merged_players = pd.read_csv('./merged_players.csv')
+    
+
+    for i in game_mode:
+        merged_matches.loc[merged_matches['game_mode'] == game_mode[i][1], 'game_mode'] = game_mode[i][2].split('game_mode_')[1]
+
+    for i in lobby_types:
+        merged_matches.loc[merged_matches['lobby_type'] == lobby_types[i][1], 'lobby_type'] = lobby_types[i][2]
+
+    for index, row in region.iterrows():
+        merged_matches.loc[merged_matches['region'] == index, 'region'] = row[0]
+    
+    for i in hero_names:
+        merged_players.loc[merged_players['hero_id'] == hero_names[i].id, 'hero_id'] = hero_names[i].localized_name
+
+    for i in items:
+        for j in range(6):
+            merged_players.loc[merged_players[f"item_{j}"]== items[i].id, f"item_{j}"] = items[i].dname
+
+
+    merged_matches.to_csv('matches.csv', index=False)
+    merged_players.to_csv('players.csv', index=False)
+
+    remove('merged_matches.csv')
+    remove('merged_players.csv')
