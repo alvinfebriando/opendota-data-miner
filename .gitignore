@@ -4,7 +4,4 @@ node_modules/
 
 output/
 filtered/
-merged.json
-matches.json
-players.json
-converted.json
+*.csv
