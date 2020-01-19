@@ -24,3 +24,22 @@ def filter_matches():
         filtered_matches.to_csv(f"./filtered/{file[:-5]}-matches.csv", index=False)
         filtered_players.to_csv(f"./filtered/{file[:-5]}-players.csv", index=False)
 
+def merge():
+    print("Merging...")
+    matches_files = glob.glob('./filtered/*-matches.csv')
+    players_files = glob.glob('./filtered/*-players.csv')
+    merged_matches = []
+    merged_players = []
+
+    for file in matches_files:
+        df = pd.read_csv(file, index_col=None, header=0)
+        merged_matches.append(df)
+    merged_matches = pd.concat(merged_matches, axis=0, ignore_index=True)
+    merged_matches.to_csv('merged_matches.csv', index=False)
+    merged_matches = None
+
+    for file in players_files:
+        df = pd.read_csv(file, index_col=None, header=0)
+        merged_players.append(df)
+    merged_players = pd.concat(merged_players, axis=0, ignore_index=True)
+    merged_players.to_csv('merged_players.csv', index=False)
